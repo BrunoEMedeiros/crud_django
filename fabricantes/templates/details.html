@@ -1,0 +1,22 @@
+{% extends 'master.html' %}
+
+{% block title %}
+detalhes do fabricante {{ x.name }}
+{% endblock  %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Informações de {{all_fabricantes.name}} {{mymember.razao_social}}
+    </div>
+    <div class="card-body">
+        <h1>{{all_fabricantes.name}}</h1>
+        <p>Telefone: {{all_fabricantes.phone}}</p>
+        <p>CNPJ: {{all_fabricantes.cnpj}}</p>
+        <p>Data de cadastro: {{all_fabricantes.joined_date}}</p>
+        
+
+        <a href="/fabricantes/">Voltar</a>
+    </div>
+</div>
+{% endblock %}

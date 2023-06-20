@@ -1,0 +1,43 @@
+{% extends 'master.html' %}
+
+{% block title %}
+Novo fabricante
+{% endblock %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Novo fabricante
+    </div>
+    <div class="card-body">
+        <form action="addrecord/" method="post" class="form-group">
+            {% csrf_token %}
+            Nome:<br>
+            <input name="nome" type="text" class="form-control" placeholder="Nome da empresa...">
+            <br><br>
+            Razão Social:<br>
+            <input name="rs" type="text" class="form-control" placeholder="Razao social...">
+            <br><br>
+            CNPJ:<br>
+            <input name="CNPJ" type="text" class="form-control" placeholder="CNPJ...">
+            <br><br>
+            Telefone:<br>
+            <input name="phone" type="tel" type="text" class="form-control" placeholder="(17)99111-9111">
+            <br><br>
+            Estado: <br>
+            <select name="estado">
+                {% for uf in myestados %}
+                    <option value="{{uf.id}}">{{uf.uf}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Salvar" class="btn btn-primary btn-lg btn-block">
+            <button type="button" class="btn btn-info btn-lg btn-block"><a href="/fabricantes">Voltar</a></button>
+        </form>
+        <br>
+        
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'master.html' %}
+
+{% block title %}
+    Atualizar fabricante
+{% endblock %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Update fabricante
+    </div>
+    <div class="card-body">
+        <form action="updaterecord/{{ all_fabricantes.id }}" method="post">
+            {% csrf_token %}
+            Nome:<br>
+            <input name="nome" placeholder="{{all_fabricantes.name}}" value="{{all_fabricantes.name}}">
+            <br><br>
+            Razão Social:<br>
+            <input name="rs" placeholder="{{all_fabricantes.razao_social}}" value="{{all_fabricantes.razao_social}}">
+            <br><br>
+            Telefone:<br>
+            <input name="phone" type="tel" placeholder="{{all_fabricantes.phone}}" value="{{all_fabricantes.phone}}">
+            <br><br>
+            CNPJ:<br>
+            <input name="CNPJ" type="number" placeholder="{{all_fabricantes.cnpj}}" value="{{all_fabricantes.cnpj}}">
+            <br><br>
+            Estado: <br>
+            <select name="estado">
+                {% for uf in myestados %}
+                <option {% if uf.id == all_fabricantes.estado.id %} selected {% endif %} value="{{uf.id}}">{{uf.uf}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Salvar" class="btn btn-primary btn-lg btn-block">
+        </form>
+        <p><a href="/fabricantes">Voltar</a></p>
+    </div>
+</div>
+{% endblock %}
